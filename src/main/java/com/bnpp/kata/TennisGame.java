@@ -32,11 +32,10 @@ public class TennisGame {
         return GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.ALL;
     }
 
-    public void increaseAPointForFirstPlayer() {
-        firstPlayerScore++;
-    }
-
-    public void increaseAPointForSecondPlayer() {
-        secondPlayerScore++;
+    public void increasePlayerScore(String pointWinnerPlayer) {
+        if(pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
+            firstPlayerScore++;
+        else if(pointWinnerPlayer.equalsIgnoreCase(secondPlayerName))
+            secondPlayerScore++;
     }
 }

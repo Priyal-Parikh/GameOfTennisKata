@@ -32,14 +32,14 @@ public class TennisGameTest {
 
     @Test
     public void firstPlayerScoreShouldIncreaseAfterWinningAPoint() {
-        tennisGame.increaseAPointForFirstPlayer();
+        tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
 
         Assert.assertEquals(GameConstants.ONE_POINT,tennisGame.getFirstPlayerScore());
     }
 
     @Test
     public void secondPlayerScoreShouldIncreaseAfterWinningAPoint() {
-        tennisGame.increaseAPointForSecondPlayer();
+        tennisGame.increasePlayerScore(GameConstants.SECOND_PLAYER);
 
         Assert.assertEquals(GameConstants.ONE_POINT,tennisGame.getSecondPlayerScore());
     }
