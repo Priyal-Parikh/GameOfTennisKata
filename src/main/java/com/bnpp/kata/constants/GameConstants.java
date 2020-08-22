@@ -10,7 +10,7 @@ public class GameConstants {
     public static final String ALL = "All";
     public static final String COLON = " : ";
 
-    public static final int ZERO_POINT = 1;
+    public static final int ZERO_POINT = 0;
     public static final int ONE_POINT = 1;
 
     public static final String INCORRECT_PLAYER_NAME = "Incorrect Player Name";

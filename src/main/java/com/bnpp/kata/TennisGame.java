@@ -1,39 +1,30 @@
 package com.bnpp.kata;
 
 import com.bnpp.kata.constants.GameConstants;
+import com.bnpp.kata.entity.TennisPlayer;
 import com.bnpp.kata.exception.TennisException;
 
 public class TennisGame {
-    private String firstPlayerName;
-    private String secondPlayerName;
-    private int firstPlayerScore;
-    private int secondPlayerScore;
+    private TennisPlayer firstPlayer;
+    private TennisPlayer secondPlayer;
 
-    public TennisGame(String firstPlayerName , String secondPlayerName) {
-        this.firstPlayerName = firstPlayerName;
-        this.secondPlayerName = secondPlayerName;
+    public TennisGame(TennisPlayer firstPlayer , TennisPlayer secondPlayer) {
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
     }
 
-    public String getFirstPlayerName() {
-        return firstPlayerName;
+    public TennisPlayer getFirstPlayer() {
+        return firstPlayer;
     }
 
-    public String getSecondPlayerName() {
-        return secondPlayerName;
-    }
-
-    public int getFirstPlayerScore() {
-        return firstPlayerScore;
-    }
-
-    public int getSecondPlayerScore() {
-        return secondPlayerScore;
+    public TennisPlayer getSecondPlayer() {
+        return secondPlayer;
     }
 
     public String getCurrentGameScore() {
         String currentGameScore;
-        String firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayerScore);
-        String secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayerScore);
+        String firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
+        String secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
 
         if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore))
             currentGameScore = firstPlayerTennisScore + GameConstants.COLON + GameConstants.ALL;
@@ -45,13 +36,13 @@ public class TennisGame {
 
     public void increasePlayerScore(String pointWinnerPlayer) {
         if (isInvalidPlayerName(pointWinnerPlayer)) throw new TennisException("Incorrect Player Name");
-        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
-            firstPlayerScore++;
-        else secondPlayerScore++;
+        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayer.getName()))
+            firstPlayer.setScoredPoint(firstPlayer.getScoredPoint()+GameConstants.ONE_POINT);
+        else secondPlayer.setScoredPoint(firstPlayer.getScoredPoint()+GameConstants.ONE_POINT);
     }
 
     private boolean isInvalidPlayerName(String playerName) {
-        return !isPlayerNameNotNull(playerName) || (!playerName.equalsIgnoreCase(firstPlayerName) && (!playerName.equalsIgnoreCase(secondPlayerName)));
+        return !isPlayerNameNotNull(playerName) || (!playerName.equalsIgnoreCase(firstPlayer.getName()) && (!playerName.equalsIgnoreCase(secondPlayer.getName())));
     }
 
     private boolean isPlayerNameNotNull(String playerName) {
@@ -61,8 +52,8 @@ public class TennisGame {
     private String getTennisScoreFromPoints(int pointsScored) {
         String tennisScore = "";
 
-        if (pointsScored == 0) tennisScore = GameConstants.SCORE_LOVE;
-        else if (pointsScored == 1) tennisScore = GameConstants.SCORE_FIFTEEN;
+        if (pointsScored == GameConstants.ZERO_POINT) tennisScore = GameConstants.SCORE_LOVE;
+        else if (pointsScored == GameConstants.ONE_POINT) tennisScore = GameConstants.SCORE_FIFTEEN;
 
         return tennisScore;
     }
