@@ -53,8 +53,8 @@ public class TennisGameTest {
     @Test
     public void shouldThrowAnExceptionIfNameIsNotCorrect() {
         exceptionRule.expect(TennisException.class);
-        exceptionRule.expectMessage("Incorrect Player Name");
+        exceptionRule.expectMessage(GameConstants.INCORRECT_PLAYER_NAME);
 
-        tennisGame.increasePlayerScore("Random Player");
+        tennisGame.increasePlayerScore(GameConstants.RANDOM_PLAYER);
     }
 }

@@ -8,4 +8,7 @@ public class GameConstants {
     public static final String COLON = " : ";
 
     public static final int ONE_POINT = 1;
+
+    public static final String INCORRECT_PLAYER_NAME = "Incorrect Player Name";
+    public static final String RANDOM_PLAYER = "Random Player";
 }
