@@ -4,6 +4,7 @@ import com.bnpp.kata.constants.GameConstants;
 public class TennisGame {
     private String firstPlayerName;
     private String secondPlayerName;
+    private int firstPlayerScore;
 
     public TennisGame(String firstPlayerName , String secondPlayerName) {
         this.firstPlayerName = firstPlayerName;
@@ -18,7 +19,15 @@ public class TennisGame {
         return secondPlayerName;
     }
 
+    public int getFirstPlayerScore() {
+        return firstPlayerScore;
+    }
+
     public String getCurrentGameScore() {
         return GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.ALL;
+    }
+
+    public void increaseAPointForFirstPlayer() {
+        firstPlayerScore++;
     }
 }
