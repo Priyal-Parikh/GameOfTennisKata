@@ -10,7 +10,7 @@ public class GameConstants {
     public static final String SCORE_FORTY = "Forty";
     public static final String SCORE_DEUCE = "Deuce";
     public static final String SCORE_ADVANTAGE = "Advantage";
-
+    public static final String SCORE_WINS = "Winner";
 
     public static final String ALL = "All";
     public static final String COLON = " : ";

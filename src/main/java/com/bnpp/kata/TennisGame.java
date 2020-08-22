@@ -28,6 +28,8 @@ public class TennisGame {
             currentGameScore = GameConstants.SCORE_DEUCE;
         else if (checkForAdvantage())
             currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + getHighestScorer();
+        else if (hasAnyPlayerScoreBeyondForty() && Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) > GameConstants.ONE_POINT)
+            currentGameScore = GameConstants.SCORE_WINS + GameConstants.COLON + getHighestScorer();
         else currentGameScore = convertScore();
 
         return currentGameScore;
