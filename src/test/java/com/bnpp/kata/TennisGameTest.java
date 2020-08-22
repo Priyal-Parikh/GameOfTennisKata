@@ -70,9 +70,15 @@ public class TennisGameTest {
 
     @Test
     public void scoreShouldReturnFifteenAllIfBothPlayerWinsFirstPoint() {
-        tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
-        tennisGame.increasePlayerScore(GameConstants.SECOND_PLAYER);
+        prepareScore(GameConstants.ONE_POINT , GameConstants.ONE_POINT);
 
         Assert.assertEquals(GameConstants.SCORE_FIFTEEN + GameConstants.COLON + GameConstants.ALL , tennisGame.getCurrentGameScore());
+    }
+
+    private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
+        for (int counter = 0; counter < firstPlayerPoints; counter++)
+            tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
+        for (int counter = 0; counter < secondPlayerPoints; counter++)
+            tennisGame.increasePlayerScore(GameConstants.SECOND_PLAYER);
     }
 }
