@@ -26,8 +26,8 @@ public class TennisGame {
 
         if (checkForDeuce())
             currentGameScore = GameConstants.SCORE_DEUCE;
-        else if (isScoreBeyondThirty(firstPlayer) && isScoreBeyondThirty(secondPlayer) && (secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint() == GameConstants.ONE_POINT))
-            return GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + secondPlayer.getName();
+        else if (checkForAdvantage())
+            currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + secondPlayer.getName();
         else currentGameScore = convertScore();
 
         return currentGameScore;
@@ -74,5 +74,17 @@ public class TennisGame {
 
     private boolean isScoreBeyondThirty(TennisPlayer tennisPlayer) {
         return tennisPlayer.getScoredPoint() >= GameConstants.THREE_POINT;
+    }
+
+    private boolean hasAnyPlayerScoreBeyondForty() {
+        return firstPlayer.getScoredPoint() > GameConstants.THREE_POINT || secondPlayer.getScoredPoint() > GameConstants.THREE_POINT;
+    }
+
+    private boolean hasSinglePointDifference() {
+        return Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) == GameConstants.ONE_POINT;
+    }
+
+    private boolean checkForAdvantage() {
+        return hasAnyPlayerScoreBeyondForty() && hasSinglePointDifference();
     }
 }
