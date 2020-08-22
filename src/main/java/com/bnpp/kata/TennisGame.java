@@ -27,7 +27,7 @@ public class TennisGame {
         if (checkForDeuce())
             currentGameScore = GameConstants.SCORE_DEUCE;
         else if (checkForAdvantage())
-            currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + (firstPlayer.getScoredPoint()>secondPlayer.getScoredPoint() ? firstPlayer.getName() :secondPlayer.getName());
+            currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + getHighestScorer();
         else currentGameScore = convertScore();
 
         return currentGameScore;
@@ -86,5 +86,9 @@ public class TennisGame {
 
     private boolean checkForAdvantage() {
         return hasAnyPlayerScoreBeyondForty() && hasSinglePointDifference();
+    }
+
+    private String getHighestScorer() {
+        return firstPlayer.getScoredPoint() > secondPlayer.getScoredPoint() ? firstPlayer.getName() : secondPlayer.getName();
     }
 }
