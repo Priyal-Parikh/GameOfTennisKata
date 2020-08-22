@@ -22,4 +22,5 @@ public class GameConstants {
 
     public static final String INCORRECT_PLAYER_NAME = "Incorrect Player Name";
     public static final String RANDOM_PLAYER = "Random Player";
+    public static final String INVALID_SCORE = "Invalid score";
 }

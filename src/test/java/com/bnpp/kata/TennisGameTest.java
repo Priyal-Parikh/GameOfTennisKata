@@ -149,6 +149,21 @@ public class TennisGameTest {
         Assert.assertEquals(GameConstants.SCORE_WINS + GameConstants.COLON + GameConstants.FIRST_PLAYER , tennisGame.getCurrentGameScore());
     }
 
+    @Test
+    @Parameters({
+            "5, 8" ,
+            "8, 5" ,
+            "15, 18 " ,
+            "22, 29 "
+    })
+    public void shouldThrowAnExceptionForInvalidScore(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+        exceptionRule.expect(TennisException.class);
+        exceptionRule.expectMessage(GameConstants.INVALID_SCORE);
+
+        tennisGame.getCurrentGameScore();
+    }
+
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
         for (int counter = 0; counter < firstPlayerPoints; counter++)
             tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
