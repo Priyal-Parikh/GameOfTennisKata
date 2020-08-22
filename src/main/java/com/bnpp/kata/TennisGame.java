@@ -95,11 +95,11 @@ public class TennisGame {
         return firstPlayer.getScoredPoint() > secondPlayer.getScoredPoint() ? firstPlayer.getName() : secondPlayer.getName();
     }
 
-    private boolean hasPointDifferenceMoreThanOne() {
-        return Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) > GameConstants.ONE_POINT;
+    private boolean hasTwoPointDifference() {
+        return Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) == GameConstants.TWO_POINT;
     }
 
     private boolean checkForWinner() {
-        return hasAnyPlayerScoreBeyondForty() && hasPointDifferenceMoreThanOne();
+        return hasAnyPlayerScoreBeyondForty() && hasTwoPointDifference();
     }
 }
