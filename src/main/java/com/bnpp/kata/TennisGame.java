@@ -1,4 +1,5 @@
 package com.bnpp.kata;
+
 import com.bnpp.kata.constants.GameConstants;
 import com.bnpp.kata.exception.TennisException;
 
@@ -30,12 +31,21 @@ public class TennisGame {
     }
 
     public String getCurrentGameScore() {
-        return GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.ALL;
+        String currentGameScore;
+        String firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayerScore);
+        String secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayerScore);
+
+        if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore))
+            currentGameScore = firstPlayerTennisScore + GameConstants.COLON + GameConstants.ALL;
+        else
+            currentGameScore = firstPlayerTennisScore + GameConstants.COLON + secondPlayerTennisScore;
+
+        return currentGameScore;
     }
 
     public void increasePlayerScore(String pointWinnerPlayer) {
         if (isInvalidPlayerName(pointWinnerPlayer)) throw new TennisException("Incorrect Player Name");
-        if(pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
+        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
             firstPlayerScore++;
         else secondPlayerScore++;
     }
@@ -46,5 +56,14 @@ public class TennisGame {
 
     private boolean isPlayerNameNotNull(String playerName) {
         return !(null == playerName) && !("".equals(playerName));
+    }
+
+    private String getTennisScoreFromPoints(int pointsScored) {
+        String tennisScore = "";
+
+        if (pointsScored == 0) tennisScore = GameConstants.SCORE_LOVE;
+        else if (pointsScored == 1) tennisScore = GameConstants.SCORE_FIFTEEN;
+
+        return tennisScore;
     }
 }

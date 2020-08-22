@@ -17,7 +17,7 @@ public class TennisGameTest {
 
     @Before
     public void initialSetup() {
-        tennisGame=new TennisGame(GameConstants.FIRST_PLAYER , GameConstants.SECOND_PLAYER);
+        tennisGame = new TennisGame(GameConstants.FIRST_PLAYER , GameConstants.SECOND_PLAYER);
     }
 
     @Test
@@ -40,14 +40,14 @@ public class TennisGameTest {
     public void firstPlayerScoreShouldIncreaseAfterWinningAPoint() {
         tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
 
-        Assert.assertEquals(GameConstants.ONE_POINT,tennisGame.getFirstPlayerScore());
+        Assert.assertEquals(GameConstants.ONE_POINT , tennisGame.getFirstPlayerScore());
     }
 
     @Test
     public void secondPlayerScoreShouldIncreaseAfterWinningAPoint() {
         tennisGame.increasePlayerScore(GameConstants.SECOND_PLAYER);
 
-        Assert.assertEquals(GameConstants.ONE_POINT,tennisGame.getSecondPlayerScore());
+        Assert.assertEquals(GameConstants.ONE_POINT , tennisGame.getSecondPlayerScore());
     }
 
     @Test
@@ -56,5 +56,13 @@ public class TennisGameTest {
         exceptionRule.expectMessage(GameConstants.INCORRECT_PLAYER_NAME);
 
         tennisGame.increasePlayerScore(GameConstants.RANDOM_PLAYER);
+    }
+
+    @Test
+    public void scoreShouldBeLoveFifteenIfSecondPlayerScoresPoint() {
+        tennisGame.increasePlayerScore(GameConstants.SECOND_PLAYER);
+        tennisGame.getCurrentGameScore();
+
+        Assert.assertEquals(GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.SCORE_FIFTEEN , tennisGame.getCurrentGameScore());
     }
 }
