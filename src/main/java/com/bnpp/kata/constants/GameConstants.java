@@ -6,4 +6,6 @@ public class GameConstants {
     public static final String SCORE_LOVE = "Love";
     public static final String ALL = "All";
     public static final String COLON = " : ";
+
+    public static final int ONE_POINT = 1;
 }
