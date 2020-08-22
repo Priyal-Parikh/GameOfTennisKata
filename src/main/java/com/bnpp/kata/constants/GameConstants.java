@@ -9,6 +9,8 @@ public class GameConstants {
     public static final String SCORE_THIRTY = "Thirty";
     public static final String SCORE_FORTY = "Forty";
     public static final String SCORE_DEUCE = "Deuce";
+    public static final String SCORE_ADVANTAGE = "Advantage";
+
 
     public static final String ALL = "All";
     public static final String COLON = " : ";

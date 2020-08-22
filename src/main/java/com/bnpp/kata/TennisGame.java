@@ -26,6 +26,8 @@ public class TennisGame {
 
         if (checkForDeuce())
             currentGameScore = GameConstants.SCORE_DEUCE;
+        else if (isScoreBeyondThirty(firstPlayer) && isScoreBeyondThirty(secondPlayer) && (secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint() == GameConstants.ONE_POINT))
+            return GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + secondPlayer.getName();
         else currentGameScore = convertScore();
 
         return currentGameScore;
