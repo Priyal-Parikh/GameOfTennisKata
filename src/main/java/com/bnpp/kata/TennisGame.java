@@ -23,13 +23,13 @@ public class TennisGame {
 
     public String getCurrentGameScore() {
         String currentGameScore;
-        String firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
-        String secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
+        TennisScoreEnum firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
+        TennisScoreEnum secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
 
-        if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore))
-            currentGameScore = firstPlayerTennisScore + GameConstants.COLON + GameConstants.ALL;
+        if (firstPlayerTennisScore.score.equalsIgnoreCase(secondPlayerTennisScore.score))
+            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + GameConstants.ALL;
         else
-            currentGameScore = firstPlayerTennisScore + GameConstants.COLON + secondPlayerTennisScore;
+            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + secondPlayerTennisScore.score;
 
         return currentGameScore;
     }
@@ -49,14 +49,7 @@ public class TennisGame {
         return !(null == playerName) && !("".equals(playerName));
     }
 
-    private String getTennisScoreFromPoints(int pointsScored) {
-        String tennisScore = "";
-
-        if (pointsScored == GameConstants.ZERO_POINT) tennisScore = GameConstants.SCORE_LOVE;
-        else if (pointsScored == GameConstants.ONE_POINT) tennisScore = GameConstants.SCORE_FIFTEEN;
-        else if (pointsScored == GameConstants.TWO_POINT) tennisScore = GameConstants.SCORE_THIRTY;
-        else if (pointsScored == GameConstants.THREE_POINT) tennisScore = GameConstants.SCORE_FORTY;
-
-        return tennisScore;
+    private TennisScoreEnum getTennisScoreFromPoints(int pointsScored) {
+        return TennisScoreEnum.fromScore(pointsScored);
     }
 }
