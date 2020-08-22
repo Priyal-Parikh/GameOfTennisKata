@@ -1,6 +1,9 @@
 package com.bnpp.kata;
 
 public class TennisGame {
+    public static final String SCORE_LOVE = "Love";
+    public static final String ALL = "All";
+    public static final String COLON = " : ";
     private String firstPlayerName;
     private String secondPlayerName;
 
@@ -18,6 +21,6 @@ public class TennisGame {
     }
 
     public String getCurrentGameScore() {
-        return "Love All";
+        return SCORE_LOVE + COLON + ALL;
     }
 }
