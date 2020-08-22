@@ -66,4 +66,13 @@ public class TennisGameTest {
 
         Assert.assertEquals(GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.SCORE_FIFTEEN , tennisGame.getCurrentGameScore());
     }
+
+
+    @Test
+    public void scoreShouldReturnFifteenAllIfBothPlayerWinsFirstPoint() {
+        tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
+        tennisGame.increasePlayerScore(GameConstants.SECOND_PLAYER);
+
+        Assert.assertEquals(GameConstants.SCORE_FIFTEEN + GameConstants.COLON + GameConstants.ALL , tennisGame.getCurrentGameScore());
+    }
 }
