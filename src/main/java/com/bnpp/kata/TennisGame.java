@@ -55,6 +55,7 @@ public class TennisGame {
         if (pointsScored == GameConstants.ZERO_POINT) tennisScore = GameConstants.SCORE_LOVE;
         else if (pointsScored == GameConstants.ONE_POINT) tennisScore = GameConstants.SCORE_FIFTEEN;
         else if (pointsScored == GameConstants.TWO_POINT) tennisScore = GameConstants.SCORE_THIRTY;
+        else if (pointsScored == GameConstants.THREE_POINT) tennisScore = GameConstants.SCORE_FORTY;
 
         return tennisScore;
     }
