@@ -27,7 +27,7 @@ public class TennisGame {
         if (checkForDeuce())
             currentGameScore = GameConstants.SCORE_DEUCE;
         else if (checkForAdvantage())
-            currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + secondPlayer.getName();
+            currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + (firstPlayer.getScoredPoint()>secondPlayer.getScoredPoint() ? firstPlayer.getName() :secondPlayer.getName());
         else currentGameScore = convertScore();
 
         return currentGameScore;
