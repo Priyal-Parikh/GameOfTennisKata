@@ -23,6 +23,10 @@ public class TennisGame {
 
     public String getCurrentGameScore() {
         String currentGameScore;
+
+        if (firstPlayer.getScoredPoint() >= GameConstants.THREE_POINT && firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint())
+            return GameConstants.SCORE_DEUCE;
+
         TennisScoreEnum firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
         TennisScoreEnum secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
 

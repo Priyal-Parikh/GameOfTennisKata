@@ -98,6 +98,19 @@ public class TennisGameTest {
         Assert.assertEquals(currentGameScore , tennisGame.getCurrentGameScore());
     }
 
+    @Test
+    @Parameters({
+            "4, 4" ,
+            "5, 5" ,
+            "15, 15" ,
+            "26, 26"
+    })
+    public void checkForDeuceSituationInGame(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+
+        Assert.assertEquals(GameConstants.SCORE_DEUCE , tennisGame.getCurrentGameScore());
+    }
+
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
         for (int counter = 0; counter < firstPlayerPoints; counter++)
             tennisGame.increasePlayerScore(GameConstants.FIRST_PLAYER);
