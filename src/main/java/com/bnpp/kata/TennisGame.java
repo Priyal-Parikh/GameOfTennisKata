@@ -1,9 +1,7 @@
 package com.bnpp.kata;
+import com.bnpp.kata.constants.GameConstants;
 
 public class TennisGame {
-    public static final String SCORE_LOVE = "Love";
-    public static final String ALL = "All";
-    public static final String COLON = " : ";
     private String firstPlayerName;
     private String secondPlayerName;
 
@@ -21,6 +19,6 @@ public class TennisGame {
     }
 
     public String getCurrentGameScore() {
-        return SCORE_LOVE + COLON + ALL;
+        return GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.ALL;
     }
 }

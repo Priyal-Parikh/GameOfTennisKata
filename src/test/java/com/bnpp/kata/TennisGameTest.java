@@ -1,20 +1,17 @@
 package com.bnpp.kata;
 
+import com.bnpp.kata.constants.GameConstants;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TennisGameTest {
-    public static final String FIRST_PLAYER = "Serena Williams";
-    public static final String SECOND_PLAYER = "Maria Sharapova";
-    public static final String SCORE_LOVE = "Love";
-    public static final String ALL = "All";
-    public static final String COLON = " : ";
+
     TennisGame tennisGame;
 
     @Before
     public void initialSetup() {
-        tennisGame=new TennisGame(FIRST_PLAYER , SECOND_PLAYER);
+        tennisGame=new TennisGame(GameConstants.FIRST_PLAYER , GameConstants.SECOND_PLAYER);
     }
 
     @Test
@@ -24,12 +21,12 @@ public class TennisGameTest {
 
     @Test
     public void startNewGameWithTwoPlayers() {
-        Assert.assertEquals(FIRST_PLAYER , tennisGame.getFirstPlayerName());
-        Assert.assertEquals(SECOND_PLAYER , tennisGame.getSecondPlayerName());
+        Assert.assertEquals(GameConstants.FIRST_PLAYER , tennisGame.getFirstPlayerName());
+        Assert.assertEquals(GameConstants.SECOND_PLAYER , tennisGame.getSecondPlayerName());
     }
 
     @Test
     public void initialScoreShouldBeLoveAll() {
-        Assert.assertEquals(SCORE_LOVE + COLON + ALL , tennisGame.getCurrentGameScore());
+        Assert.assertEquals(GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.ALL , tennisGame.getCurrentGameScore());
     }
 }
