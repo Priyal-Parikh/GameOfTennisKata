@@ -24,16 +24,9 @@ public class TennisGame {
     public String getCurrentGameScore() {
         String currentGameScore;
 
-        if (firstPlayer.getScoredPoint() >= GameConstants.THREE_POINT && firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint())
-            return GameConstants.SCORE_DEUCE;
-
-        TennisScoreEnum firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
-        TennisScoreEnum secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
-
-        if (firstPlayerTennisScore.score.equalsIgnoreCase(secondPlayerTennisScore.score))
-            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + GameConstants.ALL;
-        else
-            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + secondPlayerTennisScore.score;
+        if (checkForDeuce())
+            currentGameScore = GameConstants.SCORE_DEUCE;
+        else currentGameScore = convertScore();
 
         return currentGameScore;
     }
@@ -43,6 +36,18 @@ public class TennisGame {
         if (pointWinnerPlayer.equalsIgnoreCase(firstPlayer.getName()))
             firstPlayer.setScoredPoint(firstPlayer.getScoredPoint() + GameConstants.ONE_POINT);
         else secondPlayer.setScoredPoint(secondPlayer.getScoredPoint() + GameConstants.ONE_POINT);
+    }
+
+    private String convertScore() {
+        String currentGameScore;
+        TennisScoreEnum firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
+        TennisScoreEnum secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
+
+        if (firstPlayerTennisScore.score.equalsIgnoreCase(secondPlayerTennisScore.score))
+            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + GameConstants.ALL;
+        else
+            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + secondPlayerTennisScore.score;
+        return currentGameScore;
     }
 
     private boolean isInvalidPlayerName(String playerName) {
@@ -55,5 +60,17 @@ public class TennisGame {
 
     private TennisScoreEnum getTennisScoreFromPoints(int pointsScored) {
         return TennisScoreEnum.fromScore(pointsScored);
+    }
+
+    private boolean checkForDeuce() {
+        return isScoreBeyondThirty(firstPlayer) && isSameScore();
+    }
+
+    private boolean isSameScore() {
+        return firstPlayer.getScoredPoint() == secondPlayer.getScoredPoint();
+    }
+
+    private boolean isScoreBeyondThirty(TennisPlayer tennisPlayer) {
+        return tennisPlayer.getScoredPoint() >= GameConstants.THREE_POINT;
     }
 }
