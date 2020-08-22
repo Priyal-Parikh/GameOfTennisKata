@@ -30,7 +30,7 @@ public class TennisGame {
             currentGameScore = GameConstants.SCORE_ADVANTAGE + GameConstants.COLON + getHighestScorer();
         else if (checkForWinner())
             currentGameScore = GameConstants.SCORE_WINS + GameConstants.COLON + getHighestScorer();
-        else if (hasAnyPlayerScoreBeyondForty() && Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) > GameConstants.TWO_POINT)
+        else if (checkForInvalidScore())
             throw new TennisException(GameConstants.INVALID_SCORE);
         else currentGameScore = convertScore();
 
@@ -103,5 +103,13 @@ public class TennisGame {
 
     private boolean checkForWinner() {
         return hasAnyPlayerScoreBeyondForty() && hasTwoPointDifference();
+    }
+
+    private boolean checkForInvalidScore() {
+        return hasAnyPlayerScoreBeyondForty() && hasMoreThanTwoPointDifference();
+    }
+
+    private boolean hasMoreThanTwoPointDifference() {
+        return Math.abs(secondPlayer.getScoredPoint() - firstPlayer.getScoredPoint()) > GameConstants.TWO_POINT;
     }
 }
