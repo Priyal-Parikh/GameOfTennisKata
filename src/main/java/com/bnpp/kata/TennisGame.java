@@ -5,6 +5,7 @@ public class TennisGame {
     private String firstPlayerName;
     private String secondPlayerName;
     private int firstPlayerScore;
+    private int secondPlayerScore;
 
     public TennisGame(String firstPlayerName , String secondPlayerName) {
         this.firstPlayerName = firstPlayerName;
@@ -23,11 +24,19 @@ public class TennisGame {
         return firstPlayerScore;
     }
 
+    public int getSecondPlayerScore() {
+        return secondPlayerScore;
+    }
+
     public String getCurrentGameScore() {
         return GameConstants.SCORE_LOVE + GameConstants.COLON + GameConstants.ALL;
     }
 
     public void increaseAPointForFirstPlayer() {
         firstPlayerScore++;
+    }
+
+    public void increaseAPointForSecondPlayer() {
+        secondPlayerScore++;
     }
 }
