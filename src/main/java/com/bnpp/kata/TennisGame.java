@@ -38,7 +38,7 @@ public class TennisGame {
         if (isInvalidPlayerName(pointWinnerPlayer)) throw new TennisException("Incorrect Player Name");
         if (pointWinnerPlayer.equalsIgnoreCase(firstPlayer.getName()))
             firstPlayer.setScoredPoint(firstPlayer.getScoredPoint()+GameConstants.ONE_POINT);
-        else secondPlayer.setScoredPoint(firstPlayer.getScoredPoint()+GameConstants.ONE_POINT);
+        else secondPlayer.setScoredPoint(secondPlayer.getScoredPoint()+GameConstants.ONE_POINT);
     }
 
     private boolean isInvalidPlayerName(String playerName) {
