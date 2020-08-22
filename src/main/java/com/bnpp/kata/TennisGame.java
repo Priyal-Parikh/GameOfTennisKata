@@ -43,23 +43,24 @@ public class TennisGame {
     }
 
     private String convertScore() {
-        String currentGameScore;
         TennisScoreEnum firstPlayerTennisScore = getTennisScoreFromPoints(firstPlayer.getScoredPoint());
         TennisScoreEnum secondPlayerTennisScore = getTennisScoreFromPoints(secondPlayer.getScoredPoint());
 
-        if (firstPlayerTennisScore.score.equalsIgnoreCase(secondPlayerTennisScore.score))
-            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + GameConstants.ALL;
-        else
-            currentGameScore = firstPlayerTennisScore.score + GameConstants.COLON + secondPlayerTennisScore.score;
-        return currentGameScore;
+        return isSameScore() ?
+                firstPlayerTennisScore.score + GameConstants.COLON + GameConstants.ALL :
+                firstPlayerTennisScore.score + GameConstants.COLON + secondPlayerTennisScore.score;
     }
 
     private boolean isInvalidPlayerName(String playerName) {
-        return !isPlayerNameNotNull(playerName) || (!playerName.equalsIgnoreCase(firstPlayer.getName()) && (!playerName.equalsIgnoreCase(secondPlayer.getName())));
+        return isPlayerNameNull(playerName) || isPlayerNotExists(playerName);
     }
 
-    private boolean isPlayerNameNotNull(String playerName) {
-        return !(null == playerName) && !("".equals(playerName));
+    private boolean isPlayerNotExists(String playerName) {
+        return !playerName.equalsIgnoreCase(firstPlayer.getName()) && (!playerName.equalsIgnoreCase(secondPlayer.getName()));
+    }
+
+    private boolean isPlayerNameNull(String playerName) {
+        return (null == playerName) || ("".equals(playerName));
     }
 
     private TennisScoreEnum getTennisScoreFromPoints(int pointsScored) {
