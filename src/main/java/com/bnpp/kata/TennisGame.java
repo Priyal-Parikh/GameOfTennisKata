@@ -37,8 +37,8 @@ public class TennisGame {
     public void increasePlayerScore(String pointWinnerPlayer) {
         if (isInvalidPlayerName(pointWinnerPlayer)) throw new TennisException("Incorrect Player Name");
         if (pointWinnerPlayer.equalsIgnoreCase(firstPlayer.getName()))
-            firstPlayer.setScoredPoint(firstPlayer.getScoredPoint()+GameConstants.ONE_POINT);
-        else secondPlayer.setScoredPoint(secondPlayer.getScoredPoint()+GameConstants.ONE_POINT);
+            firstPlayer.setScoredPoint(firstPlayer.getScoredPoint() + GameConstants.ONE_POINT);
+        else secondPlayer.setScoredPoint(secondPlayer.getScoredPoint() + GameConstants.ONE_POINT);
     }
 
     private boolean isInvalidPlayerName(String playerName) {
@@ -54,6 +54,7 @@ public class TennisGame {
 
         if (pointsScored == GameConstants.ZERO_POINT) tennisScore = GameConstants.SCORE_LOVE;
         else if (pointsScored == GameConstants.ONE_POINT) tennisScore = GameConstants.SCORE_FIFTEEN;
+        else if (pointsScored == GameConstants.TWO_POINT) tennisScore = GameConstants.SCORE_THIRTY;
 
         return tennisScore;
     }
