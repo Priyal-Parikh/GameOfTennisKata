@@ -1,5 +1,6 @@
 package com.bnpp.kata;
 import com.bnpp.kata.constants.GameConstants;
+import com.bnpp.kata.exception.TennisException;
 
 public class TennisGame {
     private String firstPlayerName;
@@ -33,9 +34,17 @@ public class TennisGame {
     }
 
     public void increasePlayerScore(String pointWinnerPlayer) {
+        if (isInvalidPlayerName(pointWinnerPlayer)) throw new TennisException("Incorrect Player Name");
         if(pointWinnerPlayer.equalsIgnoreCase(firstPlayerName))
             firstPlayerScore++;
-        else if(pointWinnerPlayer.equalsIgnoreCase(secondPlayerName))
-            secondPlayerScore++;
+        else secondPlayerScore++;
+    }
+
+    private boolean isInvalidPlayerName(String playerName) {
+        return !isPlayerNameNotNull(playerName) || (!playerName.equalsIgnoreCase(firstPlayerName) && (!playerName.equalsIgnoreCase(secondPlayerName)));
+    }
+
+    private boolean isPlayerNameNotNull(String playerName) {
+        return !(null == playerName) && !("".equals(playerName));
     }
 }
