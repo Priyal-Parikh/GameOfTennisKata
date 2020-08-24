@@ -1,4 +1,4 @@
-package com.bnpp.kata.entity;
+package com.bnppf.kata.entity;
 
 public class TennisPlayer {
     private String name;
